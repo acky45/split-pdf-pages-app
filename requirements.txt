@@ -1,0 +1,4 @@
+flask
+pymupdf
+pillow
+pypdf2

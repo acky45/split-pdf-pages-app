@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF分割・結合ツール</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
+        section { border: 1px solid #ccc; border-radius: 8px; padding: 16px 24px; margin-bottom: 24px; }
+        h2 { margin-top: 0; }
+        label { display: block; margin: 12px 0 4px; }
+        button { margin-top: 16px; padding: 8px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>PDF分割・結合ツール</h1>
+
+    <section>
+        <h2>① PDFをページごとに分割</h2>
+        <form action="/split" method="post" enctype="multipart/form-data">
+            <label>PDFファイル
+                <input type="file" name="pdf_file" accept="application/pdf" required>
+            </label>
+            <label>出力形式
+                <select name="output_format">
+                    <option value="pdf">PDF（軽量）</option>
+                    <option value="png">PNG（画像）</option>
+                </select>
+            </label>
+            <button type="submit">分割してダウンロード（zip）</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>② 複数のPNGを1つのPDFに結合</h2>
+        <form action="/merge" method="post" enctype="multipart/form-data">
+            <label>PNGファイル（複数選択可・ファイル名順に結合）
+                <input type="file" name="png_files" accept="image/png" multiple required>
+            </label>
+            <button type="submit">結合してダウンロード（PDF）</button>
+        </form>
+    </section>
+</body>
+</html>
